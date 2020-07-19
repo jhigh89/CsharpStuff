@@ -28,6 +28,52 @@ namespace SchoolLibrary
                     throw new Exception("The twitter address must begin with @");
                 }
             }
+        } 
+
+        public School ()
+	    {
+            Name = "Untitled School";
+            Address = "123 Any Street";
+            City = "AnyCity";
+            State = "Arizona";
+            Zip = "55555";
+            PhoneNumber = "555-555-1234";
+	    }
+
+        public School (string SchoolName, string SchoolPhoneNumber)
+	    {
+            Name = SchoolName;
+            PhoneNumber = SchoolPhoneNumber;
+	    }
+
+        //public float AverageThreeScores(float a, float b, float c)
+        //{
+        //    var result = (a + b + c) / 3;
+        //    return result;
+        //}
+
+        //function bodied expression
+        public static float AverageThreeScores(float a, float b, float c) => (a + b + c) / 3;
+        public static int AverageThreeScores(int a, int b, int c) 
+        {
+            var result = (a + b + c) / 3;
+            return result;
         }
+
+        public override string ToString()
+        {
+            var sb = new StringBuilder();
+            sb.AppendLine(this.Name);
+            sb.AppendLine(this.Address);
+            sb.AppendLine(this.City);
+            sb.Append(", ");
+            sb.Append(this.State);
+            sb.Append("  ");
+            sb.Append(this.Zip);
+            sb.AppendLine(this.TwitterAddress);
+
+            return sb.ToString();
+        }
+
     }
 }
