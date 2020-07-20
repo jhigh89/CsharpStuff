@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SchoolLibrary;
 
 namespace SchoolFormsApp
 {
@@ -19,7 +20,21 @@ namespace SchoolFormsApp
 
         private void button1_Click(object sender, EventArgs e)
         {
+            var testSchool = new School();
+            testSchool.Name = textName.Text;
+            testSchool.Address = textAddress.Text;
+            testSchool.City = textCity.Text;
+            testSchool.State = textState.Text;
+            testSchool.Zip = textZip.Text;
+            testSchool.PhoneNumber = textPhone.Text;
+            try
+            {
+                testSchool.TwitterAddress = textTwitter.Text;
 
-        }
+            } catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            }
     }
 }
