@@ -14,6 +14,19 @@ namespace Challenge1
             Console.WriteLine("What month were you born in?");
             var month = Console.ReadLine();
             Console.WriteLine("Hello, {0}! You stated you are {1} years old and were born in the month of {2}.", name, age, month);
+
+            if (month == "march")
+            {
+                Console.WriteLine("You are an aries...");
+            }
+            else if (month == "april")
+            {
+                Console.WriteLine("You are a taurus...");
+            }
+            else if (month == "may")
+            {
+                Console.WriteLine("You are a gemini...");
+            }
         }
     }
 }
