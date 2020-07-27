@@ -8,31 +8,17 @@ namespace Challenge1
         {
             Console.WriteLine("Hello, and welcome to SimpleInfoGrabber.");
             Console.WriteLine("What's your name?");
-            var name = Console.ReadLine();
 
-
-
-            while (name == "")
-            {
-                name = TryAgain();
-            }
+            var name = TryAnswer();
 
             Console.WriteLine("How old are you?");
-            var age = Console.ReadLine();
 
-            while (age == "")
-            {
-                age = TryAgain();
-            }
-
+            var age = TryAnswer();
+          
             Console.WriteLine("What month were you born in?");
-            var month = Console.ReadLine();
 
-            while (month == "")
-            {
-                month = TryAgain();
-            }
-
+            var month = TryAnswer();
+           
             Console.WriteLine("Hello, {0}! You stated you are {1} years old and were born in the month of {2}.", name, age, month);
 
             if (month == "march")
@@ -49,11 +35,17 @@ namespace Challenge1
             }
         }
 
-        static string TryAgain()
+        static string TryAnswer()
         {
-            Console.WriteLine("You didn't type anything, please try again:");
-            return Console.ReadLine();
-        }
+            var Answer = Console.ReadLine();
+            while (Answer == "")
 
+            {
+                Console.WriteLine("You didn't type anything, please try again:");
+                Answer = Console.ReadLine();
+            }
+
+            return Answer;
+        }
     }
 }
