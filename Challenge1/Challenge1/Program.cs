@@ -9,10 +9,33 @@ namespace Challenge1
             Console.WriteLine("Hello, and welcome to SimpleInfoGrabber.");
             Console.WriteLine("What's your name?");
             var name = Console.ReadLine();
+
+
+
+            while (name == "")
+            {
+                WriteTryAgain();
+                name = Console.ReadLine();
+            }
+
             Console.WriteLine("How old are you?");
             var age = Console.ReadLine();
+
+            while (age == "")
+            {
+                WriteTryAgain();
+                age = Console.ReadLine();
+            }
+
             Console.WriteLine("What month were you born in?");
             var month = Console.ReadLine();
+
+            while (month == "")
+            {
+                WriteTryAgain();
+                month = Console.ReadLine();
+            }
+
             Console.WriteLine("Hello, {0}! You stated you are {1} years old and were born in the month of {2}.", name, age, month);
 
             if (month == "march")
@@ -28,5 +51,11 @@ namespace Challenge1
                 Console.WriteLine("You are a gemini...");
             }
         }
+
+        static void WriteTryAgain()
+        {
+            Console.WriteLine("You didn't type anything, please try again:");
+        }
+
     }
 }
