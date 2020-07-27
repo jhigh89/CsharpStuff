@@ -14,8 +14,7 @@ namespace Challenge1
 
             while (name == "")
             {
-                WriteTryAgain();
-                name = Console.ReadLine();
+                name = TryAgain();
             }
 
             Console.WriteLine("How old are you?");
@@ -23,8 +22,7 @@ namespace Challenge1
 
             while (age == "")
             {
-                WriteTryAgain();
-                age = Console.ReadLine();
+                age = TryAgain();
             }
 
             Console.WriteLine("What month were you born in?");
@@ -32,8 +30,7 @@ namespace Challenge1
 
             while (month == "")
             {
-                WriteTryAgain();
-                month = Console.ReadLine();
+                month = TryAgain();
             }
 
             Console.WriteLine("Hello, {0}! You stated you are {1} years old and were born in the month of {2}.", name, age, month);
@@ -52,9 +49,10 @@ namespace Challenge1
             }
         }
 
-        static void WriteTryAgain()
+        static string TryAgain()
         {
             Console.WriteLine("You didn't type anything, please try again:");
+            return Console.ReadLine();
         }
 
     }
