@@ -15,23 +15,19 @@ namespace SchoolTracker
             {
                 var newStudent = new Student();
 
-                Console.Write("What's the student's name?" + " ");
-                newStudent.Name = Console.ReadLine();
+                newStudent.Name = Util.SchoolUtil.Ask("What's the student's name?" + " ");
 
-                Console.Write("What grade did they get?" + " ");
-                newStudent.Grade = (int.Parse(Console.ReadLine()));
+                newStudent.Grade = (int.Parse(Util.SchoolUtil.Ask("What grade did they get?" + " ")));
 
-                Console.Write("What is their birthday?" + " ");
-                newStudent.Birthday = Console.ReadLine();
+                newStudent.Birthday = Util.SchoolUtil.Ask("What is their birthday?" + " ");
 
-                Console.Write("What is their address?" + " ");
-                newStudent.Address = Console.ReadLine();
+                newStudent.Address = Util.SchoolUtil.Ask("What is their address?" + " ");
 
-                Console.Write("What is their phone number?" + " ");
-                newStudent.Phone = (int.Parse(Console.ReadLine()));
+                newStudent.SetPhone(int.Parse(Util.SchoolUtil.Ask("What is their phone number?" + " ")));
 
                 students.Add(newStudent);
-
+                Student.Count++;
+                Console.WriteLine("Student Count: {0}", Student.Count);
 
                 Console.WriteLine("Add another? y/n");
                 if (Console.ReadLine() == "n")
@@ -41,19 +37,29 @@ namespace SchoolTracker
 
             foreach (var student in students)
             {
-                Console.WriteLine("Name: {0}, Grade: {1}, Birthday: {2}, Address: {3}, Phone: {4}", student.Name, student.Grade, student.Birthday, student.Address, student.Phone);
+                Console.WriteLine("Name: {0}, Grade: {1}, Birthday: {2}, Address: {3}", student.Name, student.Grade, student.Birthday, student.Address);
             }
         }
     }
     
     class Student
     {
+        static public int Count = 0;
 
         public string Name;
         public int Grade;
         public string Birthday;
         public string Address;
-        public int Phone;
+        private int phone;
 
+        public int Phone
+        {
+            set { phone = value; }
+        }
+
+        public void SetPhone(int number)
+        {
+            phone = number;
+        }
     }
 }
