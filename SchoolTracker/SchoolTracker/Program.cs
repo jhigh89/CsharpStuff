@@ -40,6 +40,12 @@ namespace SchoolTracker
                 Console.WriteLine("Name: {0}, Grade: {1}, Birthday: {2}, Address: {3}", student.Name, student.Grade, student.Birthday, student.Address);
             }
         }
+
+        static void Import ()
+        {
+            var importedStudent = new Student("jenjen", 2, "birthday", "address", 1234567890);
+            Console.WriteLine(importedStudent.Name);
+        }
     }
     
     class Student
@@ -52,6 +58,19 @@ namespace SchoolTracker
         public string Address;
         private int phone;
 
+        public Student()
+        {
+
+        }
+
+        public Student(string name, int grade, string birthday, string address, int phone)
+        {
+            Name = name;
+            Grade = grade;
+            Birthday = birthday;
+            Address = address;
+            Phone = phone;
+        }
         public int Phone
         {
             set { phone = value; }
