@@ -13,26 +13,36 @@ namespace SchoolTracker
 
             while ( adding == true)
             {
-                var newStudent = new Student();
+                try
+                {
+                    var newStudent = new Student();
 
-                newStudent.Name = Util.SchoolUtil.Ask("What's the student's name?" + " ");
+                    newStudent.Name = Util.SchoolUtil.Ask("What's the student's name?" + " ");
 
-                newStudent.Grade = (int.Parse(Util.SchoolUtil.Ask("What grade did they get?" + " ")));
+                    newStudent.Grade = int.Parse(Util.SchoolUtil.Ask("What grade did they get?" + " "));
 
-                newStudent.Birthday = Util.SchoolUtil.Ask("What is their birthday?" + " ");
+                    newStudent.Birthday = Util.SchoolUtil.Ask("What is their birthday?" + " ");
 
-                newStudent.Address = Util.SchoolUtil.Ask("What is their address?" + " ");
+                    newStudent.Address = Util.SchoolUtil.Ask("What is their address?" + " ");
 
-                newStudent.SetPhone(int.Parse(Util.SchoolUtil.Ask("What is their phone number?" + " ")));
+                    newStudent.SetPhone(int.Parse(Util.SchoolUtil.Ask("What is their phone number?" + " ")));
 
-                students.Add(newStudent);
-                Student.Count++;
-                Console.WriteLine("Student Count: {0}", Student.Count);
+                    students.Add(newStudent);
+                    Student.Count++;
+                    Console.WriteLine("Student Count: {0}", Student.Count);
 
-                Console.WriteLine("Add another? y/n");
-                if (Console.ReadLine() == "n")
-                    adding = false;
-
+                    Console.WriteLine("Add another? y/n");
+                    if (Console.ReadLine() == "n")
+                        adding = false;
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Error: Input was not a number.");
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Error adding student. Please try again!");
+                }
             }
 
             foreach (var student in students)

@@ -2,37 +2,57 @@
 
 namespace Challenge1
 {
+    class Data
+    {
+
+        public string Name;
+        public int Age;
+        public string Month;
+
+        public void Display()
+        {
+            Console.WriteLine("Hello, {0}! You stated you are {1} years old and were born in the month of {2}.", Name, Age, Month);
+
+            switch (Month)
+            {
+                case "March":
+                    Console.WriteLine("You are an aries...");
+                    break;
+                case "April":
+                    Console.WriteLine("You are a taurus...");
+                    break;
+                case "May":
+                    Console.WriteLine("You are a gemini...");
+                    break;
+                case "October":
+                    Console.WriteLine("You are a libra...");
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
     class Program
     {
         static void Main(string[] args)
         {
+            var surveyData = new Data();
+
             Console.WriteLine("Hello, and welcome to SimpleInfoGrabber.");
             Console.WriteLine("What's your name?");
 
-            var name = TryAnswer();
+            surveyData.Name = TryAnswer();
 
             Console.WriteLine("How old are you?");
 
-            var age = TryAnswer();
+            surveyData.Age = int.Parse(TryAnswer());
           
             Console.WriteLine("What month were you born in?");
 
-            var month = TryAnswer();
-           
-            Console.WriteLine("Hello, {0}! You stated you are {1} years old and were born in the month of {2}.", name, age, month);
+            surveyData.Month = TryAnswer();
 
-            if (month == "march")
-            {
-                Console.WriteLine("You are an aries...");
-            }
-            else if (month == "april")
-            {
-                Console.WriteLine("You are a taurus...");
-            }
-            else if (month == "may")
-            {
-                Console.WriteLine("You are a gemini...");
-            }
+            surveyData.Display();
+
         }
 
         static string TryAnswer()
