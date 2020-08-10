@@ -11,62 +11,75 @@ namespace SchoolTracker
 
             var adding = true;
 
-            while ( adding == true)
+            while (adding)
             {
                 try
                 {
                     var newStudent = new Student();
 
-                    newStudent.Name = Util.SchoolUtil.Ask("What's the student's name?" + " ");
+                    newStudent.Name = Util.SchoolUtil.Ask("Student Name: ");
 
-                    newStudent.Grade = int.Parse(Util.SchoolUtil.Ask("What grade did they get?" + " "));
+                    newStudent.Grade = Util.SchoolUtil.AskInt("Student Grade: ");
 
-                    newStudent.Birthday = Util.SchoolUtil.Ask("What is their birthday?" + " ");
+                    newStudent.School = Util.SchoolUtil.AskInt("School Name: (Please type the corresponding number: \n 0 is Hogwarts \n 1 is Harvard \n 2 is MIT) \n :");
 
-                    newStudent.Address = Util.SchoolUtil.Ask("What is their address?" + " ");
+                    newStudent.Birthday = Util.SchoolUtil.Ask("Student Birthday: ");
 
-                    newStudent.SetPhone(int.Parse(Util.SchoolUtil.Ask("What is their phone number?" + " ")));
+                    newStudent.Address = Util.SchoolUtil.Ask("Student Address: ");
+
+                    newStudent.Phone = Util.SchoolUtil.AskInt("Student Phone Number: ");
 
                     students.Add(newStudent);
                     Student.Count++;
                     Console.WriteLine("Student Count: {0}", Student.Count);
 
                     Console.WriteLine("Add another? y/n");
-                    if (Console.ReadLine() == "n")
+
+                    if (Console.ReadLine() != "y")
                         adding = false;
                 }
-                catch (FormatException)
+                catch (FormatException msg)
                 {
-                    Console.WriteLine("Error: Input was not a number.");
+                    Console.WriteLine(msg.Message);
                 }
                 catch (Exception)
                 {
-                    Console.WriteLine("Error adding student. Please try again!");
+                    Console.WriteLine("Error adding student. Please try again");
                 }
             }
 
             foreach (var student in students)
             {
-                Console.WriteLine("Name: {0}, Grade: {1}, Birthday: {2}, Address: {3}", student.Name, student.Grade, student.Birthday, student.Address);
+                Console.WriteLine("Name: {0}, Grade: {1}", student.Name, student.Grade);
             }
         }
 
-        static void Import ()
+        static void Import()
         {
-            var importedStudent = new Student("jenjen", 2, "birthday", "address", 1234567890);
+            var importedStudent = new Student("Jen", 66, "birthday", "address", 1234567890);
             Console.WriteLine(importedStudent.Name);
         }
     }
-    
-    class Student
+
+    class Member
+    {
+        public string Name;
+        public string Address;
+        protected int phone;
+
+        public int Phone
+        {
+            set { phone = value; }
+        }
+    }
+
+    class Student : Member
     {
         static public int Count = 0;
 
-        public string Name;
         public int Grade;
         public string Birthday;
-        public string Address;
-        private int phone;
+        public int School;
 
         public Student()
         {
@@ -81,14 +94,10 @@ namespace SchoolTracker
             Address = address;
             Phone = phone;
         }
-        public int Phone
-        {
-            set { phone = value; }
-        }
+    }
 
-        public void SetPhone(int number)
-        {
-            phone = number;
-        }
+    class Teacher : Member
+    {
+        public string Subject;
     }
 }
